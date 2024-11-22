@@ -5,6 +5,7 @@ import LatestNews from "../LatestNews/LatestNews";
 import Navbar from "../Navbar/Navbar";
 import LeftLayout from "../Layout-Component/LeftLayout";
 import RightLayout from "../Layout-Component/RightLayout";
+import CategoryNews from "../../pages/CategoryNews/CategoryNews";
 
 const MainLayout = () => {
   return (
@@ -22,12 +23,13 @@ const MainLayout = () => {
         <aside className="col-span-3">
           <LeftLayout></LeftLayout>
         </aside>
-        <section className="col-span-6">middle content</section>
+        <section className="col-span-6">
+          <Outlet></Outlet>
+        </section>
         <aside className="col-span-3">
           <RightLayout></RightLayout>
         </aside>
       </main>
-      <Outlet></Outlet>
     </div>
   );
 };
