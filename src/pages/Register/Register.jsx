@@ -1,13 +1,41 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { signUpUser } = useContext(AuthContext);
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    // get form data
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const photoURL = form.get("photoURL");
+    const email = form.get("email");
+    const password = form.get("password");
+
+    console.log({ name, photoURL, email, password });
+
+    // sign up user
+    signUpUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
   return (
     <div className="min-h-screen flex justify-center items-center pt-10">
       <div className="card bg-white w-full max-w-md shrink-0 rounded-none py-10">
         <h2 className="text-xl font-semibold text-center text-black">
           Register your account
         </h2>
-        <form className="card-body">
+        <form onSubmit={handleSignUp} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold text-black text-base">
@@ -58,7 +86,7 @@ const Register = () => {
             </label>
             <input
               name="password"
-              type="password"
+              type="text"
               placeholder="password"
               className="input input-bordered"
               required

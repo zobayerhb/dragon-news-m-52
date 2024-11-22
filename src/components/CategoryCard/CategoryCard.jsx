@@ -1,4 +1,5 @@
 import { FaRegEye, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CategoryCard = ({ newses }) => {
   const {
@@ -9,7 +10,7 @@ const CategoryCard = ({ newses }) => {
     author,
     thumbnail_url,
     others_info,
-  } = newses;
+  } = newses || {};
 
   return (
     <div className="card border border-gray-200">
@@ -42,13 +43,16 @@ const CategoryCard = ({ newses }) => {
 
         {/* Details */}
         <p className="text-sm text-gray-700 line-clamp-3">{details}</p>
+        <Link className="text-blue-700 font-semibold" to={`/news/${newses._id}`}>Read More</Link>
 
         {/* Footer */}
         <div className="flex justify-between items-center mt-4">
           {/* Rating */}
           <div className="flex items-center text-orange-500">
             <FaStar className="w-5 h-5" />
-            <span className="ml-1">{rating.number} ({rating.badge})</span>
+            <span className="ml-1">
+              {rating.number} ({rating.badge})
+            </span>
           </div>
 
           {/* Views */}
