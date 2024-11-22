@@ -5,7 +5,6 @@ import LatestNews from "../LatestNews/LatestNews";
 import Navbar from "../Navbar/Navbar";
 import LeftLayout from "../Layout-Component/LeftLayout";
 import RightLayout from "../Layout-Component/RightLayout";
-import CategoryNews from "../../pages/CategoryNews/CategoryNews";
 
 const MainLayout = () => {
   return (
