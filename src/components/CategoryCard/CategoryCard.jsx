@@ -43,7 +43,12 @@ const CategoryCard = ({ newses }) => {
 
         {/* Details */}
         <p className="text-sm text-gray-700 line-clamp-3">{details}</p>
-        <Link className="text-blue-700 font-semibold" to={`/news/${newses._id}`}>Read More</Link>
+        <Link
+          className="text-blue-700 font-semibold"
+          to={`/news/${newses._id}`}
+        >
+          Read More
+        </Link>
 
         {/* Footer */}
         <div className="flex justify-between items-center mt-4">

@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
+  
   const userSignOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -42,13 +42,16 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     signUpUser,
     userSignOut,
     userSignIn,
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

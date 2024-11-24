@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { FaChevronLeft } from "react-icons/fa";
 
 const NewsDetail = () => {
   const data = useLoaderData();
@@ -18,6 +19,7 @@ const NewsDetail = () => {
             to={`/category/${news.category_id}`}
             className="btn btn-primary"
           >
+            <FaChevronLeft></FaChevronLeft>
             Back to Category
           </Link>
         </div>

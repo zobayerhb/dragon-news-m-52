@@ -9,7 +9,6 @@ const LeftLayout = () => {
       .then((res) => res.json())
       .then((data) => setCategory(data.data.news_category));
   }, []);
-  console.log(categories);
   return (
     <div>
       <h2 className="font-semibold text-xl">
