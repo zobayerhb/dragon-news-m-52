@@ -4,7 +4,7 @@ import { FaChevronLeft } from "react-icons/fa";
 const NewsDetail = () => {
   const data = useLoaderData();
   const news = data.data[0];
-  console.log(news);
+  // console.log(news);
 
   return (
     <div className="card bg-base-100 shadow-xl">

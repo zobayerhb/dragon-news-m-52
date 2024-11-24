@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const Login = () => {
-  const { userSignIn } = useContext(AuthContext);
+  const { userSignIn, forgotPass } = useContext(AuthContext);
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const Login = () => {
 
     userSignIn(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
@@ -27,6 +28,23 @@ const Login = () => {
       });
     // console.log({ email, password });
   };
+
+  // password reset
+  // const passwordReset = (email) => {
+  //   const emailData = emailRef.current.value;
+  //   if(!emailData){
+  //     alert("please provide a valid email")
+  //   }
+  //   else{
+  //     forgotPass(emailData)
+  //     .then(()=>{
+  //       alert('password reset email sent');
+  //     })
+  //     .catch(err=>{
+  //       console.log(err.message);
+  //     })
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex justify-center items-center">
