@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { signUpUser } = useContext(AuthContext);
+  const { signUpUser, userProfileUpdate } = useContext(AuthContext);
   const [error, setError] = useState({});
+  const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
 
@@ -38,6 +39,13 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
         alert("User successfully register");
+        userProfileUpdate({ displayName: name, photoURL: photoURL })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((err) => {
+            setError(err.code);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
